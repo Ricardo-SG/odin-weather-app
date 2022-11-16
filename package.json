@@ -1,0 +1,40 @@
+{
+  "name": "odin-weather-app",
+  "version": "1.0.0",
+  "description": "Weather app web",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ricardo-SG/odin-weather-app.git"
+  },
+  "author": "RicSaurusRex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ricardo-SG/odin-weather-app/issues"
+  },
+  "homepage": "https://github.com/Ricardo-SG/odin-weather-app#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.10",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "2.7.1",
+    "sass": "^1.56.0",
+    "sass-loader": "^13.1.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "eslint-plugin-prettier": "^4.2.1"
+  }
+}
