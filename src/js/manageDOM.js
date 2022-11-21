@@ -1,4 +1,8 @@
 /* eslint-enable */
+import maxTemp from '../img/high-temp.png';
+import minTemp from '../img/low-temp.png';
+import humidity from '../img/humidity.png';
+import windSpeed from '../img/windSpeed.png';
 
 // This module pattern will manage the dom modifications of our web
 const manageDOM = (function () {
@@ -7,15 +11,12 @@ const manageDOM = (function () {
 
   const setWeather = function (data) {
     cleanCanvas(); // We delete all childs of weatherCanvas if it has from a previous set
-    const sign = ' °C';
+    const sign = getTempSign();
+    // const sign = ' °C';
 
     const location = document.createElement('p');
     location.id = 'wlocation';
     location.textContent = data.name;
-
-    const title = document.createElement('p');
-    title.id = 'wtitle';
-    title.textContent = data.weather[0].main;
 
     const desc = document.createElement('p');
     desc.id = 'wdesc';
@@ -24,52 +25,70 @@ const manageDOM = (function () {
     const imag = document.createElement('img');
     imag.id = 'wimag';
     imag.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    //    `http://openweathermap.org/img/wn/10d@2x.png`
-    //    https://openweathermap.org/img/wn/01d@2x.png
-    //    http ://openweathermap.org/img/w/01n@2x.png
-    //    https://openweathermap.org/img/wn/01n@2x.png
+
     const temp = document.createElement('p');
     temp.id = 'wtemp';
-    temp.textContent = 'Temperature: ' + data.main.temp + sign;
+    temp.textContent = data.main.temp + sign;
 
-    const tempMax = document.createElement('p');
-    tempMax.id = 'wtemp-max';
-    tempMax.textContent = 'Max Temperature: ' + data.main.temp_max + sign;
+    const thermal = document.createElement('p'); // thermal Sensation
+    thermal.id = 'wthermal';
+    thermal.textContent = 'Feels like: ' + data.main.feels_like + sign;
 
-    const tempMin = document.createElement('p');
-    tempMin.id = 'wtemp-min';
-    tempMin.textContent = 'Min Temperature: ' + data.main.temp_min + sign;
+    const footWData = document.createElement('div');
+    footWData.id = 'foot-weather-data';
+    const leftContainer = document.createElement('div');
+    leftContainer.id = 'left-container';
+    const rightContainer = document.createElement('div');
+    rightContainer.id = 'right-container';
 
-    const termic = document.createElement('p'); // Termic Sensation
-    termic.id = 'wtermic';
-    termic.textContent = 'Termic sensation: ' + data.main.feels_like + sign;
+    /* Max temp icon and text */
+    const imgMaxTemp = document.createElement('img');
+    imgMaxTemp.id = 'img-max-temp';
+    imgMaxTemp.src = maxTemp;
+    const txtMaxTemp = document.createElement('div');
+    txtMaxTemp.id = 'txt-max-temp';
+    txtMaxTemp.textContent = data.main.temp_max + sign;
 
-    const pressure = document.createElement('p');
-    pressure.id = 'wpressure';
-    pressure.textContent = 'Pressure: ' + data.main.pressure + ' hPa';
+    /* Min temp icon and text */
+    const imgMinTemp = document.createElement('img');
+    imgMinTemp.id = 'img-min-temp';
+    imgMinTemp.src = minTemp;
+    const txtMinTemp = document.createElement('div');
+    txtMinTemp.id = 'txt-min-temp';
+    txtMinTemp.textContent = data.main.temp_min + sign;
 
-    const humidity = document.createElement('p');
-    humidity.id = 'whumidity';
-    humidity.textContent = 'Humidity: ' + data.main.humidity + ' %';
+    /* Humidity icon and text */
+    const imgHumidity = document.createElement('img');
+    imgHumidity.id = 'img-humidity';
+    imgHumidity.src = humidity;
 
-    const windSpeed = document.createElement('p');
-    windSpeed.id = 'wwind-speed';
-    windSpeed.textContent = 'Wind Speed: ' + data.wind.speed + ' km/h';
+    const txtHumidity = document.createElement('div');
+    txtHumidity.id = 'txt-humidity';
+    txtHumidity.textContent = data.main.humidity + '%';
 
-    weatherCanvas.append(
-      location,
-      title,
-      desc,
-      imag,
-      temp,
-      tempMax,
-      tempMin,
-      termic,
-      pressure,
-      humidity,
-      windSpeed
-    );
+    /* Wind speed icon and text */
+    const imgWindSpeed = document.createElement('img');
+    imgWindSpeed.id = 'img-Wind-speed';
+    imgWindSpeed.src = windSpeed;
+
+    const txtWindSpeed = document.createElement('div');
+    txtWindSpeed.id = 'txt-wind-speed';
+    txtWindSpeed.textContent = data.wind.speed + ' km/h';
+
+    leftContainer.append(imgMaxTemp, txtMaxTemp, imgMinTemp, txtMinTemp);
+    rightContainer.append(txtHumidity, imgHumidity, txtWindSpeed, imgWindSpeed);
+    footWData.append(leftContainer, rightContainer);
+
+    weatherCanvas.append(location, desc, imag, temp, thermal, footWData);
   };
+
+  function getTempSign() {
+    const divWithSign = document.querySelector('.selected');
+    console.log('<getTempSign>' + divWithSign);
+    console.log('divWithSign.textcontent:' + divWithSign.textContent);
+
+    return ' ' + divWithSign.textContent;
+  }
 
   const cleanCanvas = function () {
     while (weatherCanvas.firstChild) {

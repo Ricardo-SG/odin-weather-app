@@ -21,18 +21,22 @@ const manageFetchs = (function () {
 
   // data --> Tells us what we gonna fetch
   // ...args --> receive the arguments for the call.
-  async function obtain(data, ...args) {
+  async function obtain(data, args) {
     assignFeedback(0); // by default we've worked fine
 
     switch (data.toLowerCase()) {
       case 'weather': {
+        console.log('args: ' + args);
         const city = String(args[0]);
+        const units = String(args[1]); // It can only be 'metrics', imperial, or standard
+        console.log('units: ' + units);
         if (validateCity(city)) {
-          fetchedData.data = await getWeatherData(city.toLowerCase()).catch(
-            (e) => {
-              assignFeedback(1);
-            }
-          );
+          fetchedData.data = await getWeatherData(
+            city.toLowerCase(),
+            units
+          ).catch((e) => {
+            assignFeedback(1);
+          });
         } else {
           // City argument is wrong
           assignFeedback(2);
@@ -56,7 +60,10 @@ const manageFetchs = (function () {
     return regex.test(city);
   }
 
-  async function getWeatherData(city) {
+  async function getWeatherData(city, units) {
+    console.log('<getWeatherData>');
+    console.log('city: ' + city);
+    console.log('units: ' + units);
     // We do two API fetch
     // 1) First Geocoding api to obtain latitude and longitude
     // 2) Then OpenWeather to obtain the weather information
@@ -71,7 +78,7 @@ const manageFetchs = (function () {
       const weatherData = await getWeatherByCoords(
         coords[0].lat,
         coords[0].lon,
-        'metric'
+        units
       ).catch((e) => {
         assignFeedback(5);
       });
@@ -95,6 +102,10 @@ const manageFetchs = (function () {
   /* If no unit has been provided, we will gonna use metric, if the url doesn't have unit defined/*   it will take by default "standard" and return Kelvin. */
   /* List of all API parameters with units openweathermap.org/weather-data */
   async function getWeatherByCoords(lat, lon, units) {
+    console.log('<getWeatherByCoords>');
+    console.log('lat: ' + lat);
+    console.log('lon: ' + lon);
+    console.log('units: ' + units);
     if (units === null || units === undefined) {
       units = 'metric';
     }

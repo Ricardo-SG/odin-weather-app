@@ -1,0 +1,213 @@
+/* font families */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=K2D:ital,wght@1,300&family=Kreon:wght@500&family=Montserrat:wght@300&family=Reenie+Beanie&display=swap');
+/*
+font-family: 'Comic Neue', cursive;
+font-family: 'K2D', sans-serif;
+font-family: 'Kreon', serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Reenie Beanie', cursive;*/
+body {
+  position: relative;
+  background: url('../img/clearcloudy.jpg') no-repeat center fixed;
+  text-align: center;
+  margin: auto;
+  max-width: 800px;
+  height: 100vh;
+}
+.invisible {
+  display: none;
+}
+
+.visible-block {
+  display: block;
+}
+
+#search-div {
+  text-align: center;
+  margin-bottom: 20px;
+
+  #input-city {
+    // background-image: url('../img/magnifyingglass.png');
+    // background-position: 10px 10px;
+    // background-size: 31px;
+    // background-repeat: no-repeat;
+
+    font-family: 'Kreon', serif;
+
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin: 8px 0;
+
+    background-color: lightblue;
+    font-size: 22px;
+    &:focus {
+      border: 3px solid #555;
+    }
+  }
+
+  #input-feedback {
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 20px;
+    border: 3px solid rgb(192, 118, 118);
+    background-color: whitesmoke;
+    color: red;
+  }
+
+  #units-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+
+    #metric,
+    #imperial,
+    #standard {
+      aspect-ratio: 1;
+      display: grid;
+      align-items: center;
+      justify-items: baseline;
+      border: 3px solid #555;
+      height: 100px;
+      font-size: 80px;
+      background: whitesmoke;
+
+      cursor: pointer;
+    }
+    .selected {
+      background: rgb(0, 0, 99) !important;
+      color: white !important;
+      border: 3px solid rgb(191, 201, 255) !important;
+      outline: 1px solid rgb(242, 242, 255) !important;
+    }
+  }
+}
+
+#weather-canvas {
+  margin: 10px auto;
+  padding: 5px;
+  max-width: 500px;
+  background: rgba(0, 0, 0, 0.404);
+  color: whitesmoke;
+
+  #wlocation {
+    font-size: 80px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kreon', serif;
+  }
+
+  #wdesc {
+    font-size: 60px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  #wimag {
+    margin: 0;
+    padding: 0;
+  }
+  #wtemp {
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  #wthermal {
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    color: rgb(98, 248, 98);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  #foot-weather-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Kreon', serif;
+
+    #left-container {
+      justify-self: start;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      justify-items: left;
+      align-items: center;
+    }
+    #right-container {
+      justify-self: end;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      justify-items: right;
+      align-items: center;
+    }
+    img {
+      height: 50px;
+    }
+  }
+}
+
+#credits {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 128, 0.267);
+  font-size: 22px;
+  color: navy;
+
+  font-family: 'K2D', sans-serif;
+
+  a {
+    text-align: left;
+    font-size: 18px;
+    display: block;
+    color: navy;
+  }
+}
+
+@media (max-width: 350px) {
+  #search-div {
+    #input-city {
+      width: 300px;
+      font-size: 15px;
+    }
+    #units-container {
+      #metric,
+      #imperial,
+      #standard {
+        height: 60px;
+        font-size: 50px;
+      }
+    }
+  }
+
+  #weather-canvas {
+    #wlocation {
+      font-size: 60px;
+    }
+
+    #wdesc {
+      font-size: 40px;
+    }
+
+    #wtemp {
+      font-size: 20px;
+    }
+
+    #wthermal {
+      font-size: 20px;
+    }
+  }
+
+  #credits {
+    a {
+      font-size: 13px;
+    }
+  }
+}
