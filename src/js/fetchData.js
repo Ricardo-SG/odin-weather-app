@@ -26,10 +26,8 @@ const manageFetchs = (function () {
 
     switch (data.toLowerCase()) {
       case 'weather': {
-        console.log('args: ' + args);
         const city = String(args[0]);
         const units = String(args[1]); // It can only be 'metrics', imperial, or standard
-        console.log('units: ' + units);
         if (validateCity(city)) {
           fetchedData.data = await getWeatherData(
             city.toLowerCase(),
@@ -61,9 +59,6 @@ const manageFetchs = (function () {
   }
 
   async function getWeatherData(city, units) {
-    console.log('<getWeatherData>');
-    console.log('city: ' + city);
-    console.log('units: ' + units);
     // We do two API fetch
     // 1) First Geocoding api to obtain latitude and longitude
     // 2) Then OpenWeather to obtain the weather information
@@ -90,7 +85,7 @@ const manageFetchs = (function () {
 
   async function getCoordsByCity(city) {
     // The URL for GEOCODING api
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${wApiKey}`;
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${wApiKey}`;
 
     const response = await fetch(url, mode);
     const dataJson = await response.json();
@@ -102,10 +97,6 @@ const manageFetchs = (function () {
   /* If no unit has been provided, we will gonna use metric, if the url doesn't have unit defined/*   it will take by default "standard" and return Kelvin. */
   /* List of all API parameters with units openweathermap.org/weather-data */
   async function getWeatherByCoords(lat, lon, units) {
-    console.log('<getWeatherByCoords>');
-    console.log('lat: ' + lat);
-    console.log('lon: ' + lon);
-    console.log('units: ' + units);
     if (units === null || units === undefined) {
       units = 'metric';
     }
@@ -119,7 +110,6 @@ const manageFetchs = (function () {
   }
 
   function assignFeedback(code) {
-    console.log('<assignFeeedback> ' + code);
     fetchedData.feedback.code = code;
     // lets assign a reason
     switch (code) {

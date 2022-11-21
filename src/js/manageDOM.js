@@ -11,6 +11,7 @@ const manageDOM = (function () {
 
   const setWeather = function (data) {
     cleanCanvas(); // We delete all childs of weatherCanvas if it has from a previous set
+    weatherCanvas.classList.remove('invisible');
     const sign = getTempSign();
     // const sign = ' °C';
 
