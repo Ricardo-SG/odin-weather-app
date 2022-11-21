@@ -85,8 +85,6 @@ const manageDOM = (function () {
 
   function getTempSign() {
     const divWithSign = document.querySelector('.selected');
-    console.log('<getTempSign>' + divWithSign);
-    console.log('divWithSign.textcontent:' + divWithSign.textContent);
 
     return ' ' + divWithSign.textContent;
   }

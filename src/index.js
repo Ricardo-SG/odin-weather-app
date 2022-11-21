@@ -8,7 +8,7 @@ const iCity = document.getElementById('input-city');
 const metric = document.getElementById('metric');
 const imperial = document.getElementById('imperial');
 const standard = document.getElementById('standard');
-let currentUnit = '';
+let currentUnit = 'metric'; // by default
 let currentCity = '';
 
 load();
