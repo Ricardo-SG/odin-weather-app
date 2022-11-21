@@ -7,7 +7,70 @@
     <title>The Odin Project: Weather APP</title>
   <script defer src="main.js"></script></head>
   <body>
+    <div id="search-div">
+      <input
+        type="text"
+        id="input-city"
+        value=""
+        placeholder="Write here a Location like Barcelona"
+      />
+      <div id="input-feedback" class="invisible">
+        Location not found, try something similar
+      </div>
+      <div id="units-container">
+        <div id="metric" class="selected">°C</div>
+        <div id="imperial">°F</div>
+        <div id="standard">°K</div>
+      </div>
+    </div>
     <div id="weather-canvas"></div>
-    <input type="text" id="input-city" value="" />
+    <div id="credits">
+      <p>Credits for the assets of this web:</p>
+      <a
+        href="https://www.freepik.com/free-photo/sunshine-clouds-sky-during-morning-background-blue-white-pastel-heaven-soft-focus-lens-flare-sunlight-abstract-blurred-cyan-gradient-peaceful-nature-open-view-out-windows-beautiful-summer-spring_1284995.htm#query=weather%20background&position=4&from_view=keyword"
+        title="sunshine clouds sky background image"
+        >sunshine clouds sky background image Image by tirachard</a
+      >
+
+      <a
+        href="https://www.flaticon.com/free-icons/high-temperature"
+        title="high temperature icons"
+        >High temperature icons created by phatplus - Flaticon</a
+      >
+
+      <a
+        href="https://www.flaticon.com/free-icons/low-temperature"
+        title="low temperature icons"
+        >Low temperature icons created by Freepik - Flaticon</a
+      >
+
+      <a
+        href="https://www.flaticon.com/free-icons/humidity"
+        title="humidity icons"
+        >Humidity icons created by Pixel perfect - Flaticon</a
+      >
+
+      <a href="https://www.flaticon.com/free-icons/wind" title="wind icons"
+        >Wind icons created by Freepik - Flaticon</a
+      >
+    </div>
   </body>
 </html>
+
+<!--
+
+background credits:
+<a href="https://www.freepik.com/free-photo/sunshine-clouds-sky-during-morning-background-blue-white-pastel-heaven-soft-focus-lens-flare-sunlight-abstract-blurred-cyan-gradient-peaceful-nature-open-view-out-windows-beautiful-summer-spring_1284995.htm#query=weather%20background&position=4&from_view=keyword">Image by tirachard</a> on Freepik
+
+High temperature credits:
+<a href="https://www.flaticon.com/free-icons/high-temperature" title="high temperature icons">High temperature icons created by phatplus - Flaticon</a>
+
+Low temperature credits:
+<a href="https://www.flaticon.com/free-icons/low-temperature" title="low temperature icons">Low temperature icons created by Freepik - Flaticon</a>
+
+humidity credits:
+<a href="https://www.flaticon.com/free-icons/humidity" title="humidity icons">Humidity icons created by Pixel perfect - Flaticon</a>
+
+Wind speed credits:
+<a href="https://www.flaticon.com/free-icons/wind" title="wind icons">Wind icons created by Freepik - Flaticon</a>
+-->
